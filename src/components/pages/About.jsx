@@ -18,7 +18,7 @@ export const About = () => {
             grand gesture or a heartfelt token, let our collection bring
             brilliance to your most cherished moments.
           </p>
-          <img className="about-image" src="../headshot.png" alt="Enamore" />
+          <img className="about-image" width="300px" height="300px" />
         </div>
       </div>
 

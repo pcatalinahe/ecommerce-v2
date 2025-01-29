@@ -1,16 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer"; 
 import { Route, Routes } from "react-router-dom";
 import { Home, About, Contact, Products } from "./components/pages"; 
-// import all pages at once using index.js to avoid:
 
-// import { About } from "./components/pages/About";
-// import { Contact } from "./components/pages/Contact";
-// import { Services } from "./components/pages/Services";
-// .
-// .
-// .
 
 function App() {
   return (
@@ -25,6 +19,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/products" element={<Products />} />
         </Routes>
+        <Footer />
       </div>
   );
 }
@@ -32,25 +27,3 @@ function App() {
 export default App;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// This is the main component of the application. It serves as the central hub for rendering the Navbar and setting up page routing.

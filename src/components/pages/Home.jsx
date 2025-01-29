@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Home.css";
 
 export const Home = () => {
+  const images = [   "products/pink-ring.jpg",
+    "products/heart-bear.jpg",
+    "products/teddy-pendant-green.jpg",];
+  
+  const [current, setCurrent] = useState(0);
+  const length = images.length;
+
+  const nextSlide = () => setCurrent((current + 1) % length);
+  const prevSlide = () => setCurrent((current - 1 + length) % length);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 3000);
+    return () => clearInterval(interval);
+  }, [current]);
+
+
   return (
     <div>
       <div id="hero">
@@ -21,9 +37,7 @@ export const Home = () => {
         <div className="decor-text">
 
           <h2>Celebrate Love in Every Sparkle</h2>
-          <a href="../html/shop.html">
             <button className="shop">SHOP COLLECTION</button>
-          </a>
         </div>
       </div>
       <div className="home-p" id="home-p1">
@@ -42,6 +56,17 @@ export const Home = () => {
           Couple’s Collection – Matching pieces to celebrate your unique bond.
         </p>
         <p>Eternal Gifts – Thoughtful keepsakes that last beyond the season.</p>
+      </div>
+
+            {/* Image Slider */}
+            <div className="slider">
+        <button className="prev" onClick={prevSlide}>&#10094;</button>
+        {images.map((img, index) => (
+          <div key={index} className={index === current ? "slide active" : "slide"}>
+            {index === current && <img src={img} alt={`Slide ${index + 1}`} />}
+          </div>
+        ))}
+        <button className="next" onClick={nextSlide}>&#10095;</button>
       </div>
     </div>
   );

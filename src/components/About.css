@@ -44,14 +44,19 @@
   }
   
   .about-image {
-    max-width: 300px;
-    border-radius: 50%;
+    /* max-width: 5000px;
+    max-height: 5000px; */
+    border-radius: 5px;
     box-shadow: 0 5px 15px rgba(255, 182, 193, 0.3);
     margin: 2rem auto;
     display: block;
-    border: 3px solid #fff;
+    /* border: 3px solid #fff; */
     transition: transform 0.3s ease;
+    background-image: url("../assets/headshot.png");
+    background-size: cover;
+    background-position: center;
   }
+
   
   .about-image:hover {
     transform: scale(1.05);

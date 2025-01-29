@@ -8,7 +8,7 @@ export const Products = () => {
   const selectRef = useRef(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("http://localhost:8080/api/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -41,23 +41,33 @@ export const Products = () => {
       </div> */}
       <h1 className="products-title">Services</h1>
 
-      <select className="price-filter" onChange={handleFilter} ref={selectRef} name="" id="price-filter">
+      <select
+        className="price-filter"
+        onChange={handleFilter}
+        ref={selectRef}
+        name=""
+        id="price-filter"
+      >
         <option value="all">Select your price range</option>
         <option value="low">$110-$400</option>
         <option value="high">Over $400</option>
       </select>
 
       <div className="products-grid">
-      {filteredProducts.map((product) => (
-        <div key={product.id} className="product-card">
-          <img className="product-image" src={product.image} alt={product.description} />
-          <div className="product-details">
-          <h2 className="product-title">{product.title}</h2>
-          <p className="product-description">{product.description}</p>
-          <p className="product-price">$ {product.price}</p>
+        {filteredProducts.map((product) => (
+          <div key={product.id} className="product-card">
+            <img
+              className="product-image"
+              src={product.image}
+              alt={product.description}
+            />
+            <div className="product-details">
+              <h2 className="product-title">{product.title}</h2>
+              <p className="product-description">{product.description}</p>
+              <p className="product-price">$ {product.price}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

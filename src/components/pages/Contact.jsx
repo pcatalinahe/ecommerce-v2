@@ -1,7 +1,20 @@
 import React from "react";
 import "../Contact.css";
+import { useForm } from "react-hook-form";
 
 export const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    alert("Form submitted successfully!\n" + JSON.stringify(data, null, 2));
+    reset(); // Reset the form after successful submission
+  };
+
   return (
     <div className="contact-container">
       <div className="contact-section">
@@ -11,32 +24,71 @@ export const Contact = () => {
           </video>
         </div> */}
         <div className="contact-form">
-          <form id="contactus-form" className="form-content">
+          <form
+            id="contactus-form"
+            className="form-content"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <h1 className="form-title">Contact Us</h1>
 
             <div className="form-group">
-            <label  className="form-label">
-              First Name (<span className="required">*</span>)
-            </label>
-            <input type="text" id="f-name" className="form-input" placeholder="First name" />
-            <span id="fname-error" className="error-message"></span>
-</div>
-<div className="form-group">
-<label className="form-label">
-Last Name (<span className="required">*</span>)
-            </label>
-            <input type="text" id="l-name" className="form-input" placeholder="Last name" />
-            <span id="lname-error" className="error-message"></span>
+              <label className="form-label">
+                First Name (<span className="required">*</span>)
+              </label>
+              <input
+                type="text"
+                id="f-name"
+                className="form-input"
+                placeholder="First name"
+                {...register("firstName", {
+                  required: "First name is required.",
+                })}
+              />
+              {errors.firstName && (
+                <span className="error-message">
+                  {errors.firstName.message}
+                </span>
+              )}
+            </div>
+            <div className="form-group">
+              <label className="form-label">
+                Last Name (<span className="required">*</span>)
+              </label>
+              <input
+                type="text"
+                id="l-name"
+                className="form-input"
+                placeholder="Last name"
+                {...register("lastName", {
+                  required: "Last name is required.",
+                })}
+              />
+              {errors.lastName && (
+                <span className="error-message">{errors.lastName.message}</span>
+              )}
             </div>
 
-           <div className="form-group">
+            <div className="form-group">
               <label className="form-label">
                 Email (<span className="required">*</span>)
               </label>
-              <input type="email" id="email" className="form-input" placeholder="Insert email address" />
-              <span id="email-error" className="error-message"></span>
+              <input
+                type="email"
+                id="email"
+                className="form-input"
+                placeholder="Insert email address"
+                {...register("email", {
+                  required: "Email is required.",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Please enter a valid email.",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="error-message">{errors.email.message}</span>
+              )}
             </div>
-
 
             <div className="form-group">
               <label className="form-label">
@@ -46,12 +98,14 @@ Last Name (<span className="required">*</span>)
                 id="msg"
                 className="form-textarea"
                 placeholder="Your inquiry or comment*"
+                {...register("message", { required: "Message is required." })}
               ></textarea>
-              <span id="msg-error" className="error-message"></span>
+              {errors.message && (
+                <span className="error-message">{errors.message.message}</span>
+              )}
             </div>
 
-
-             <button type="submit" id="send" className="submit-btn">
+            <button type="submit" id="send" className="submit-btn">
               Send
             </button>
 
@@ -60,9 +114,13 @@ Last Name (<span className="required">*</span>)
         </div>
 
         <div className="newsletter">
-          <h1 className="newsletter-title">💌 Sign up now and enjoy 10% off your first order!</h1>
+          <h1 className="newsletter-title">
+            💌 Sign up now and enjoy 10% off your first order!
+          </h1>
 
-          <h4 className="newsletter-subtitle">Your love story starts here—let Enamoré make it sparkle.</h4>
+          <h4 className="newsletter-subtitle">
+            Your love story starts here—let Enamoré make it sparkle.
+          </h4>
           <p className="newsletter-intro">Be the first to know about:</p>
           <ul className="benefits-list">
             <ol>

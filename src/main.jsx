@@ -18,12 +18,3 @@ createRoot(document.getElementById('root')).render(
 
 
 
-
-
-
-
-
-
-
-
-// This file is the entry point of the app. It renders the App component inside the BrowserRouter and attaches it to the DOM.

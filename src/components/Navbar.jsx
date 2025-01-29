@@ -1,7 +1,5 @@
 // use state to toggle visibility of the hamburger menu
 import React, { useState } from "react";
-// Link is used for basic navigation without refreshing the page.
-// Use NavLink when you want to visually highlight the currently active link in a navigation menu or tabbed interface.
 import { Link, NavLink } from "react-router-dom";
 
 import "./Navbar.css";
@@ -28,10 +26,7 @@ export const Navbar = () => {
       {/* hamburger menu for responsiveness, if menuOpen is false, no class is applied, otherwise true */}
       <ul className={menuOpen ? "open" : ""}>
 
-      {/* onClick={() => setMenuOpen("")} */} 
-      {/* example for NavLink difference ^^^^^ */}
-
-        <li>
+        <li  onClick={() => setMenuOpen("")} >
           {/* prop "to" specifies what URL is linked */}
           <NavLink to="/products">Products</NavLink>
           

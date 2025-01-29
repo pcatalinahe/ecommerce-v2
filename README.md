@@ -4,7 +4,6 @@ A persistent navbar across all pages.
 Three main pages: Home, About, and Contact (I also added a bonus page: Services).
 Navigation between pages using React Router and BrowserRouter for client-side routing.
 
-
 Definition: An Single Page Application is a type of web application where all the content is loaded on a single HTML page. Instead of loading a new page from the server when navigating, the application dynamically updates the page using JavaScript.
 
 Unlike traditional websites where the browser requests a new HTML page from the server, in  SPA the browser doesn't reload the page, instead JS dynamically changes what you see, creating it smoother and faster user experience.
