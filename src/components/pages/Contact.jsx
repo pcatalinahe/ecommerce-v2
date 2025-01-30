@@ -4,11 +4,11 @@ import { useForm } from "react-hook-form";
 
 export const Contact = () => {
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+    register, // Register the input
+    handleSubmit, // Submit the form
+    formState: { errors }, // Form validation errors
+    reset, // Reset the form on submit
+  } = useForm(); 
 
   const onSubmit = (data) => {
     alert("Form submitted successfully!\n" + JSON.stringify(data, null, 2));
@@ -27,7 +27,7 @@ export const Contact = () => {
           <form
             id="contactus-form"
             className="form-content"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit)} // Call the onSubmit function on form submission
           >
             <h1 className="form-title">Contact Us</h1>
 

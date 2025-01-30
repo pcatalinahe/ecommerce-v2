@@ -22,7 +22,7 @@ export const Home = () => {
     <div>
       <div id="hero">
         <video autoPlay muted loop>
-          <source src="/src/assets/hero.mp4" type="video/mp4" />
+          <source src="assets/hero.mp4" type="video/mp4" />
         </video>
         <div className="hero-text">
           <h1>Sparkle with Love, Shine with Passion</h1>

@@ -1,20 +1,23 @@
 import mysql from 'mysql2/promise';
-import pool from './connectionPool.js';
+import { promisePool } from './connectionPool.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
+
+// fetches all products from the database using pool connection and returns the result
 async function getProducts() {
-    const connection = await pool.getConnection();
+    // const connection = await pool.getConnection();
     try{
-    const [rows] = await connection.query('SELECT * FROM ProductsDB.Products');
+    const [rows] = await promisePool.execute('SELECT * FROM sql5760373.Products');
     // connection.release();
     return rows;
     } catch (e) {
         console.log(e);
         throw e;
-    } finally {
-        connection.release();
-    }
+    } 
+    // finally {
+    //     promisePool.release();
+    // }
 }
 
 const data = await getProducts();

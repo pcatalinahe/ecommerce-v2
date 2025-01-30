@@ -3,12 +3,13 @@ import "../Products.css";
 // import "../Styles.css"
 
 export const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState([]); //state to store the products
+  const [filteredProducts, setFilteredProducts] = useState([]); //state to store the filtered products
   const selectRef = useRef(null);
 
-  useEffect(() => {
-    fetch("http://localhost:8080/api/products")
+  
+  useEffect(() => { //send a fetch request to the server to get the products
+    fetch("api/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -17,18 +18,18 @@ export const Products = () => {
       });
   }, []);
 
-  function handleFilter(e) {
-    const value = e.target.value;
+  function handleFilter(e) { //handlefilter function filters the products based on the price range selected
+    const value = e.target.value; //get the value of the selected option
     console.log("it changed, ", value);
-    if (value === "all") {
+    if (value === "all") { //if the user selects all, show all products
       setFilteredProducts(products);
     }
-    if (value === "low") {
+    if (value === "low") { //if the user selects low, show products with price less than 400
       const lowPrice = products.filter((product) => product.price < 400);
       setFilteredProducts(lowPrice);
     } else if (value === "high") {
       const highPrice = products.filter((product) => product.price > 400);
-      setFilteredProducts(highPrice);
+      setFilteredProducts(highPrice); 
     }
   }
 
@@ -43,16 +44,16 @@ export const Products = () => {
 
       <select
         className="price-filter"
-        onChange={handleFilter}
-        ref={selectRef}
+        onChange={handleFilter}  //call the handleFilter function when the user selects an option
+        ref={selectRef} //reference to the select element
         name=""
-        id="price-filter"
+        id="price-filter" 
       >
         <option value="all">Select your price range</option>
         <option value="low">$110-$400</option>
         <option value="high">Over $400</option>
       </select>
-
+      {/* map through the filtered products and display them */}
       <div className="products-grid">
         {filteredProducts.map((product) => (
           <div key={product.id} className="product-card">
