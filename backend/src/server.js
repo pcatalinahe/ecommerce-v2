@@ -31,7 +31,7 @@ app.get("/api/products", async (req, res) => {
 });
 
 //draws our index.html file on localhost:8080
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(htmlPath); // send the index.html file
 });
 
