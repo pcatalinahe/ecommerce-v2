@@ -31,7 +31,7 @@ export const Home = () => {
             From dazzling jewelry to exquisite accessories, our collection is
             designed to capture the magic of romance and timeless elegance.
           </p>
-          <button className="shop">SHOP COLLECTION</button>
+          <Link to="/products"><button className="shop">SHOP COLLECTION</button></Link>
         </div>
       </div>
       <div className="decor">
