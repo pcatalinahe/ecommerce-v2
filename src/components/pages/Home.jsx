@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Home.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const images = [   "products/pink-ring.jpg",
@@ -37,7 +38,7 @@ export const Home = () => {
         <div className="decor-text">
 
           <h2>Celebrate Love in Every Sparkle</h2>
-            <button className="shop">SHOP COLLECTION</button>
+            <Link to="/products"><button className="shop">SHOP COLLECTION</button></Link>
         </div>
       </div>
       <div className="home-p" id="home-p1">
