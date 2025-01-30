@@ -9,7 +9,7 @@ export const Products = () => {
 
   
   useEffect(() => { //send a fetch request to the server to get the products
-    fetch("api/products")
+    fetch("/api/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
